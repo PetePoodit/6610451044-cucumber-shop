@@ -14,8 +14,9 @@ public class Order {
     }
 
     public void addItem(Product prod, int quantity) {
-        items.add(new OrderItem(prod, quantity));
+        // Check stock before adding item - this will throw exception if insufficient
         prod.cutStock(quantity);
+        items.add(new OrderItem(prod, quantity));
     }
 
     public double getTotal() {
